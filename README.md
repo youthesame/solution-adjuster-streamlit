@@ -2,6 +2,12 @@
 
 Streamlit app for solution concentration adjustment calculations.
 
+## Web App
+
+Try the Streamlit web app here:
+
+https://solution-adjuster-app.streamlit.app
+
 ## Requirements
 
 - Python >=3.10

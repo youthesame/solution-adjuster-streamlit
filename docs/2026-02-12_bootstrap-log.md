@@ -17,7 +17,7 @@ Set up a reproducible Streamlit project baseline with `uv`, `ruff`, `pre-commit`
 4. Configure lint/format and pre-commit hooks.
 5. Add ignore and README deployment instructions.
 6. Validate with Ruff, pre-commit, and Streamlit startup smoke test.
-7. Initialize Git and prepare GitHub creation/push.
+7. Initialize Git, create private GitHub repository, and push first commit.
 
 ## 4. Executed commands
 ```bash
@@ -38,6 +38,13 @@ uv run pre-commit install
 uv run pre-commit run --all-files
 uv run pre-commit run --files Adjusting_concentration.py src/solution_adjuster_streamlit/__init__.py
 uv run streamlit run Adjusting_concentration.py --server.headless true --server.port 8501
+gh auth status
+gh repo create solution-adjuster-streamlit --private --source=. --remote=origin
+git remote -v
+gh repo view youthesame/solution-adjuster-streamlit --json nameWithOwner,isPrivate,url,defaultBranchRef
+git add -A
+git commit -m "chore: initialize streamlit project baseline"
+git push -u origin main
 ```
 
 ## 5. Results and generated artifacts
@@ -54,6 +61,7 @@ Updated:
 - `pyproject.toml` (`requires-python = ">=3.10,<3.15"`, added `streamlit>=1.52.0`, dev tooling)
 - `Adjusting_concentration.py` (removed unused imports, formatted)
 - `README.md` (setup/run/deploy instructions)
+- GitHub repository created: `https://github.com/youthesame/solution-adjuster-streamlit` (private, default branch `main`)
 
 ## 6. Validation results
 - `uv run ruff check .`: passed
@@ -62,11 +70,6 @@ Updated:
 - Streamlit startup smoke test: app started and served at `http://localhost:8501`, then stopped cleanly
 
 ## 7. Next actions
-1. Verify `gh auth status`.
-2. Create private GitHub repository and set remote:
-   `gh repo create solution-adjuster-streamlit --private --source=. --remote=origin`
-3. Commit and push:
-   `git add -A && git commit -m "chore: initialize streamlit project baseline" && git push -u origin <branch>`
-4. Deploy on Streamlit Community Cloud with:
+1. Deploy on Streamlit Community Cloud with:
    - Main file path: `Adjusting_concentration.py`
    - Python version: `3.14` (Advanced settings)

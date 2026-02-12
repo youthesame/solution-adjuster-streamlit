@@ -1,21 +1,28 @@
 # solution-adjuster-streamlit
 
-Streamlit app for concentration adjustment calculations.
+Streamlit app for solution concentration adjustment calculations.
 
 ## Requirements
 
 - Python >=3.10
 - streamlit
-- numpy
+- plotly
 
-## Run the app
+## Local Usage
+
+### Option 1: Run directly with `uvx`
+
+No installation needed — just run:
 
 ```bash
-uv run streamlit run ajust_concentration.py
+uvx --from git+https://github.com/youthesame/solution-adjuster-streamlit streamlit run adjust_concentrarion.py
 ```
 
-## Streamlit Community Cloud deployment
+### Option 2: Clone and install with `pip`
 
-1. Connect this GitHub repository in Streamlit Community Cloud.
-2. Set **Main file path** to `ajust_concentration.py`.
-3. Open **Advanced settings** and set **Python version** to `3.14`.
+```bash
+git clone https://github.com/youthesame/solution-adjuster-streamlit.git
+cd solution-adjuster-streamlit
+pip install .
+streamlit run adjust_concentrarion.py
+```

@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 
 import plotly.graph_objects as go
 import streamlit as st
@@ -86,7 +86,7 @@ with col_result:
         display = f"{val:.4f}{sep}{suffix}"
 
         # CSV データ作成
-        today = date.today().isoformat()
+        timestamp = datetime.now().strftime("%Y%m%d-%H%M%S")
         mode_key = {"wt%": "wt", "溶質量": "solute", "溶媒量": "solvent"}[mode]
         total_mg = solute_mg + solvent_mg
         wt_val = 100 * solute_mg / total_mg if total_mg > 0 else 0
@@ -100,7 +100,7 @@ with col_result:
         col_dl.download_button(
             ":material/download:",
             csv,
-            f"{today}_{mode_key}-{unit}.csv",
+            f"{timestamp}_{mode_key}_{unit}.csv",
             "text/csv",
         )
     else:
@@ -138,7 +138,7 @@ if solute_mg > 0 or solvent_mg > 0:
         xaxis={"visible": False},
         yaxis={"visible": False},
     )
-    st.plotly_chart(fig, width="stretch")
+    st.plotly_chart(fig, width="stretch", config={"staticPlot": True})
 
 # 計算式
 FORMULAS = {

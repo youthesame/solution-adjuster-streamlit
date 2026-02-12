@@ -1090,8 +1090,10 @@ wheels = [
 [[package]]
 name = "solution-adjuster-streamlit"
 version = "0.1.0"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "numpy", version = "2.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "streamlit" },
 ]
 
@@ -1102,7 +1104,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "streamlit", specifier = ">=1.52.0" }]
+requires-dist = [
+    { name = "numpy", specifier = ">=2.2.6" },
+    { name = "streamlit", specifier = ">=1.52.0" },
+]
 
 [package.metadata.requires-dev]
 dev = [

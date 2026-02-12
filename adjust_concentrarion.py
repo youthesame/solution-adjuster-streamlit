@@ -1,6 +1,5 @@
 import streamlit as st
 
-
 st.title("concentration tool")
 solute = st.number_input("溶質(mg)", 0.000, 100000.000, 11.000)
 solvent = st.number_input("溶媒(mg)", 0.000, 100000.000, 100.000)
